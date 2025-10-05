@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Солнечный калькулятор - Расчет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>☀️ Солнечный калькулятор</h1>
+            <p>Расчет выработки и окупаемости солнечных панелей</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="calculator.html" class="active">Калькулятор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="calculator-container">
+                <h2>Расчет солнечной электростанции</h2>
+                <p>Заполните параметры вашей будущей солнечной электростанции</p>
+                
+                <form id="solar-calculator">
+                    <div class="form-section">
+                        <h3>1. Местоположение</h3>
+                        <div class="form-group">
+                            <label for="region">Регион:</label>
+                            <select id="region" name="region" required>
+                                <option value="">Выберите регион</option>
+                                <option value="Москва">Москва</option>
+                                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                                <option value="Сочи">Сочи</option>
+                                <option value="Екатеринбург">Екатеринбург</option>
+                                <option value="Новосибирск">Новосибирск</option>
+                                <option value="Владивосток">Владивосток</option>
+                                <option value="Краснодар">Краснодар</option>
+                                <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>2. Солнечные панели</h3>
+                        <div class="form-group">
+                            <label for="panel_type">Тип панелей:</label>
+                            <select id="panel_type" name="panel_type" required>
+                                <option value="">Выберите тип</option>
+                                <option value="монокристаллические">Монокристаллические</option>
+                                <option value="поликристаллические">Поликристаллические</option>
+                                <option value="тонкопленочные">Тонкопленочные</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="panel_power">Мощность одной панели (Вт):</label>
+                                <input type="number" id="panel_power" name="panel_power" min="50" max="500" value="300" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="panel_count">Количество панелей:</label>
+                                <input type="number" id="panel_count" name="panel_count" min="1" max="100" value="10" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="panel_angle">Угол наклона панелей (градусы):</label>
+                            <input type="range" id="panel_angle" name="panel_angle" min="0" max="90" value="30">
+                            <span id="angle-value">30°</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>3. Дополнительное оборудование</h3>
+                        
+                        <div class="form-group">
+                            <label for="battery_capacity">Емкость аккумуляторов (А*ч):</label>
+                            <input type="number" id="battery_capacity" name="battery_capacity" min="0" value="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inverter_power">Мощность инвертора (Вт):</label>
+                            <input type="number" id="inverter_power" name="inverter_power" min="0" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary" onclick="calculateSolarEnergy()">Рассчитать</button>
+                        <button type="reset" class="btn btn-secondary">Сбросить</button>
+                    </div>
+                </form>
+                
+                <div id="loading" class="loading hidden">
+                    <p>Выполняем расчеты...</p>
+                </div>
+                
+                <div id="results" class="results hidden">
+                    <!-- Результаты появятся здесь -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Солнечный калькулятор</p>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
